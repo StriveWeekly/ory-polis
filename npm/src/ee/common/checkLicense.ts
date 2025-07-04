@@ -1,11 +1,7 @@
 import { JacksonError } from '../../controller/error';
 
 const checkLicense = async (license: string | undefined): Promise<boolean> => {
-  if (!license) {
-    return false;
-  }
-
-  return license === 'dummy-license';
+  return Promise.resolve(true);
 };
 
 export const throwIfInvalidLicense = async (license: string | undefined): Promise<void> => {

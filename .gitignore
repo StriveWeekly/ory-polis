@@ -57,3 +57,9 @@ _dev/docker/libsql/iku.db
 /playwright/.cache/
 .idea
 _dev/cockroach-data
+
+# sst
+.sst
+
+# open-next
+.open-next

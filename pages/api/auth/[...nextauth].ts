@@ -8,7 +8,7 @@ import jackson from '@lib/jackson';
 import { validateEmailWithACL } from '@lib/utils';
 import { jacksonOptions as env } from '@lib/env';
 import { sessionName } from '@lib/constants';
-
+import { Resource } from 'sst';
 export default NextAuth({
   theme: {
     colorScheme: 'light',
@@ -99,7 +99,8 @@ export default NextAuth({
           return null;
         }
 
-        const adminCredentials = process.env.NEXTAUTH_ADMIN_CREDENTIALS;
+        const adminCredentials =
+          process.env.NEXTAUTH_ADMIN_CREDENTIALS || Resource.NEXTAUTH_ADMIN_CREDENTIALS.value;
 
         if (!adminCredentials) {
           throw Error(

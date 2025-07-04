@@ -11,7 +11,7 @@ import { ButtonOutline, Loading } from '@boxyhq/internal-ui';
 import { Login as SSOLogin } from '@boxyhq/react-ui/sso';
 import { adminPortalSSODefaults } from '@lib/env';
 import { getPortalBranding } from '@ee/branding/utils';
-
+import { Resource } from 'sst';
 const Login = ({
   csrfToken,
   tenant,
@@ -232,7 +232,8 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   const { locale }: GetServerSidePropsContext = context;
 
   const isMagicLinkEnabled = process.env.NEXTAUTH_ACL ? true : false;
-  const isEmailPasswordEnabled = process.env.NEXTAUTH_ADMIN_CREDENTIALS ? true : false;
+  const isEmailPasswordEnabled =
+    process.env.NEXTAUTH_ADMIN_CREDENTIALS || Resource.NEXTAUTH_ADMIN_CREDENTIALS.value ? true : false;
 
   const { tenant, product } = adminPortalSSODefaults;
 
